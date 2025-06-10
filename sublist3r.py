@@ -26,15 +26,16 @@ import requests
 if sys.version > '3':
     import urllib.parse as urlparse
     import urllib.parse as urllib
+    unicode = str  # Fix for Python 3: define unicode as str
 else:
-    import urlparse
+    import urllib.parse as urlparse
     import urllib
 
 # In case you cannot install some of the required development packages
 # there's also an option to disable the SSL warning:
 try:
-    import requests.packages.urllib3
-    requests.packages.urllib3.disable_warnings()
+    import urllib3
+    urllib3.disable_warnings()
 except:
     pass
 
